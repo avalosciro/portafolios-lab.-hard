@@ -268,27 +268,244 @@ body.modo-oscuro .caja-destacada {
     background-color: #66beca; /* Fondo azul noche profundo */
     border: 1px solid #334155; /* Borde sutil para que no se pierda en el fondo oscuro */
 }
-#cursor-follower {
-    position: fixed; /* Lo saca del flujo normal para moverse libremente */
-    width: 20px;
-    height: 20px;
-    background-color: rgba(0, 158, 71, 0.4); /* Azul traslúcido */
-    border-radius: 50%; /* Lo convierte en un círculo perfecto */
-    
-    pointer-events: none; /* INVISIBLE PARA CLICS: Permite cliquear lo que hay debajo */
-    z-index: 9999; /* Lo coloca en la capa más alta (por encima de todo) */
-    
-    transition: transform 0.1s ease-out; /* Suaviza el movimiento */
-    transform: translate(-50%, -50%); /* Centra el círculo exactamente en la punta del cursor */
-}
-/* Modificamos el menú para que parezca de cristal (tipo Windows 11 o macOS) */
+
 nav {
     background-color: rgba(34, 1, 16, 0.8) !important; /* Azul oscuro con 80% de opacidad */
     backdrop-filter: blur(10px); /* Pide a la tarjeta gráfica que desenfoque lo que pasa por detrás */
     -webkit-backdrop-filter: blur(10px); /* Soporte para navegadores basados en Safari */
 }
 
-/* Personalización del Scrollbar (Barra de desplazamiento) */
+
+/* ============================================================
+   MODAL ARQUITECTURA - TABS
+   ============================================================ */
+
+#modal-arquitectura {
+    background-color: rgb(25, 40, 55);
+    color: #dedfe0;
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    max-width: 680px;
+    width: 95%;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+#modal-arquitectura::backdrop {
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-arquitectura-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 15px;
+    border-bottom: 1px solid #3a4a5a;
+}
+
+.modal-arquitectura-header h3 {
+    margin: 0;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+}
+
+.boton-cerrar-x {
+    padding: 6px 12px;
+    font-size: 0.9rem;
+    margin-top: 0;
+}
+
+.modal-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 15px 25px;
+    border-bottom: 1px solid #3a4a5a;
+    background-color: rgb(20, 33, 46);
+}
+
+.tab-btn {
+    background: transparent;
+    border: 1px solid #4a5a6a;
+    color: #a0b0c0;
+    padding: 7px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab-btn:hover {
+    background-color: #2a3a4a;
+    color: #e0e0e0;
+}
+
+.tab-btn.tab-activo {
+    background-color: #b93b5a;
+    border-color: #b93b5a;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+    padding: 20px 25px 25px;
+}
+
+.tab-content.tab-content-activo {
+    display: block;
+}
+
+.tab-content h4 {
+    color: #8af7ae;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1rem;
+}
+
+.tab-content p {
+    color: #c8d0d8;
+    font-size: 0.9rem;
+    margin: 8px 0;
+}
+
+.comparativa-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.comp-item {
+    background-color: rgb(35, 50, 65);
+    border: 1px solid #3a4a5a;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.comp-item.comp-destacado {
+    border-color: #b93b5a;
+    background-color: rgb(45, 30, 40);
+}
+
+.comp-titulo {
+    display: block;
+    font-weight: bold;
+    color: #e0e0e0;
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.comp-item ul {
+    margin: 0;
+    padding-left: 16px;
+}
+
+.comp-item ul li {
+    color: #a0b0c0;
+    font-size: 0.8rem;
+    margin-bottom: 3px;
+}
+
+.comp-item.comp-destacado .comp-titulo {
+    color: #f7a8ba;
+}
+
+.comp-item.comp-destacado ul li {
+    color: #c8a0a8;
+}
+
+.info-box {
+    background-color: rgb(20, 50, 40);
+    border-left: 3px solid #2cac70;
+    border-radius: 4px;
+    padding: 10px 15px;
+    margin: 12px 0;
+}
+
+.info-box p {
+    margin: 4px 0;
+    font-size: 0.85rem;
+    color: #a8d8b8;
+}
+
+.conclusion {
+    background-color: rgb(40, 35, 20);
+    border-left: 3px solid #da3737d3;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-size: 0.85rem !important;
+    color: #d0c0a0 !important;
+    margin-top: 15px !important;
+}
+
+.headers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.header-item {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(35, 50, 65);
+    border: 1px solid #3a4a5a;
+    border-radius: 6px;
+    padding: 10px 12px;
+}
+
+.header-nombre {
+    font-weight: bold;
+    color: #8af7ae;
+    font-size: 0.83rem;
+    font-family: monospace;
+    margin-bottom: 3px;
+}
+
+.header-desc {
+    color: #90a0b0;
+    font-size: 0.78rem;
+}
+
+/* Modo oscuro para el nuevo modal */
+body.modo-oscuro #modal-arquitectura {
+    background-color: #0f2030;
+    border: 1px solid #334155;
+}
+
+body.modo-oscuro .modal-tabs {
+    background-color: #081828;
+}
+
+body.modo-oscuro .modal-arquitectura-header {
+    border-bottom-color: #334155;
+}
+
+body.modo-oscuro .modal-tabs {
+    border-bottom-color: #334155;
+}
+
+/* Responsive del modal */
+@media screen and (max-width: 600px) {
+    .modal-tabs {
+        gap: 4px;
+        padding: 10px 15px;
+    }
+
+    .tab-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+    }
+
+    .tab-content {
+        padding: 15px 15px 20px;
+    }
+
+    .comparativa-grid {
+        grid-template-columns: 1fr;
+    }
+}
 ::-webkit-scrollbar {
     width: 10px; /* Ancho de la barra */
 }
@@ -306,5 +523,8 @@ nav {
     background: #2563eb; /* Azul más oscuro al pasar el mouse */
 }
 #modal-info p {
-    color: black;
+    color: rgb(182, 168, 168);
+}
+dialog  {
+    background-color: rgb(31, 51, 68);
 }

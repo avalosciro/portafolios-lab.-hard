@@ -72,21 +72,40 @@ botonTema.addEventListener('click', function() {
         botonTema.textContent = '☽';
     }
 });
-// 1. Capturamos el nodo del círculo
-const seguidor = document.getElementById('cursor-follower');
 
-// 2. Escuchamos el evento global de movimiento del mouse en todo el documento
-document.addEventListener('mousemove', (e) => {
-    // El objeto 'e' (evento) contiene la información enviada por el hardware
-    // Capturamos las coordenadas exactas en los ejes X (horizontal) e Y (vertical)
-    const x = e.clientX;
-    const y = e.clientY;
-    
-    // Inyectamos esas coordenadas en el CSS del círculo usando Template Literals (comillas invertidas)
-    seguidor.style.left = `${x}px`;
-    seguidor.style.top = `${y}px`;
+// ── Modal Arquitectura ────────────────────────────────────────────────────────
+
+const botonArquitectura  = document.getElementById('btn-arquitectura');
+const modalArquitectura  = document.getElementById('modal-arquitectura');
+const botonCerrarArq     = document.getElementById('btn-cerrar-arquitectura');
+
+botonArquitectura.addEventListener('click', function() {
+    modalArquitectura.showModal();
 });
-// ── Partículas interactivas ───────────────────────────────────────────────────
+
+botonCerrarArq.addEventListener('click', function() {
+    modalArquitectura.close();
+});
+
+/* Lógica de Tabs */
+const tabBtns = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+        const tabId = btn.getAttribute('data-tab');
+
+        /* Quitar activo de todos */
+        tabBtns.forEach(function(b) { b.classList.remove('tab-activo'); });
+        tabContents.forEach(function(c) { c.classList.remove('tab-content-activo'); });
+
+        /* Activar el seleccionado */
+        btn.classList.add('tab-activo');
+        document.getElementById('tab-' + tabId).classList.add('tab-content-activo');
+    });
+});
+
+
 // Pon un <canvas id="particleCanvas"></canvas> en tu HTML donde quieras el efecto
 
 const canvas = document.getElementById('particleCanvas');
