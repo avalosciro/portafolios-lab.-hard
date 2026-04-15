@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio técnico de hardware, presupuestos y mantenimiento de PC. Proyecto de 5to año.">
+    <meta name="description"
+        content="Portafolio técnico de hardware, presupuestos y mantenimiento de PC. Proyecto de 5to año.">
     <meta name="keywords" content="hardware, armado de pc, amd, asrock, mantenimiento, arduino, informática">
     <meta name="author" content="Ciro Avalos">
     <title>Bitácora de Laboratorio 2026 | Ciro Avalos</title>
 </head>
 
 <body>
-
+    <canvas id="particleCanvas" style="position:fixed; top:0; left:0; z-index:-1; background:#0a0a0f;"></canvas>
+    <div id="cursor-follower"></div>
     <!-- ETAPA 7: Botón flotante para cambiar tema. El JS lo busca por id="btn-tema" -->
     <button id="btn-tema" class="interruptor-tema" title="Cambiar tema">☽</button>
 
@@ -36,7 +42,8 @@
 
         <section id="componentes">
             <h2>Diagnóstico de Componentes</h2>
-            <a href="LINK_DEL_DOC">Ver Ficha Técnica Completa</a>
+            <a href="https://docs.google.com/document/d/1ZYHId2c0wLszfXAjR6R-Fr9BFYJiCQZ6SB7ojw4XT9c/edit?tab=t.0#heading=h.wl8wgpqr6pul"
+                target="_blank">Ver Ficha Técnica Completa</a>
 
             <div class="galeria-grid">
                 <div class="tarjeta">
@@ -45,6 +52,7 @@
                     <p>Modelo: ASRock X870E Taichi</p>
                     <!-- ETAPA 4: El JS busca este botón por id="btn-diagnostico" para abrir el modal -->
                     <button id="btn-diagnostico" class="boton-accion">Ver Layout del Manual</button>
+                    <button id="btn-arquitectura" class="boton-accion" style="margin-top: 8px;">Ver Arquitectura de Placa</button>
                 </div>
 
                 <div class="tarjeta">
@@ -52,6 +60,9 @@
                     <h3>Microprocesador</h3>
                     <p>Modelo: AMD Ryzen™ 7 9800X3D Desktop Processor</p>
                     <p>Arquitectura: 64 bits, x64</p>
+                    <button id="btn-procesador" class="boton-accion" style="margin-top: 8px;">Ver Arquitectura del procesador</button>
+                     <a href="https://docs.google.com/document/d/1lcSYQJobuoliBj2XlyB6rshgYvCthubR1uOrLAryaLQ/edit?tab=t.0#heading=h.fa52d7vbabaw"
+                     target="_blank">Ver informe</a>
                 </div>
 
                 <div class="tarjeta">
@@ -99,14 +110,14 @@
             <div class="galeria-grid">
                 <div class="tarjeta">
                     <img src="images/monitor.jpg" alt="Monitor">
-                    <h3>Monitor (monitor 4k oled 240hz) (Salida)</h3>
+                    <h3>Monitor (monitor 4k oled 240hz)</h3>
                     <p>Resolución: 3840 x 2160 píxeles 240Hz</p>
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/teclado.jpg" alt="Kit Teclado y Mouse">
                     <h3>Teclado(k552 kumara)</h3>
-                    <p>Conectividad: USB / Inalámbrico 2.4GHz</p>
+                    <p>Conectividad: USB z</p>
                 </div>
 
                 <div class="tarjeta">
@@ -117,17 +128,20 @@
 
                 <div class="tarjeta">
                     <img src="images/auriculares.jpg" alt="Auriculares inalámbricos">
-                    <h3>Auriculares (Salida/Entrada)</h3>
+                    <h3>Auriculares </h3>
                     <p>Modelo: xyperx cloud 3</p>
                     <p>Conectividad: Bluetooth</p>
                 </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px; padding: 25px; background-color: #9bbde9; border-radius: 8px;">
+            <div
+                style="text-align: center; margin-top: 40px; padding: 25px; background-color: #465c57; border-radius: 8px;">
                 <h3>Base de Datos de Conocimiento</h3>
-                <p>Acceso al informe técnico sobre funcionamiento de componentes, arquitectura de buses y resolución de cuellos de botella (Bottlenecks).</p>
+                <p>Acceso al informe técnico sobre funcionamiento de componentes, arquitectura de buses y resolución de
+                    cuellos de botella (Bottlenecks).</p>
                 <br>
-                <a href="LINK_A_TU_GOOGLE_DOC_TEORICO" target="_blank" class="boton-accion" style="text-decoration: none;">
+                <a href="LINK_A_TU_GOOGLE_DOC_TEORICO" target="_blank" class="boton-accion"
+                    style="text-decoration: none;">
                     Leer Informe Completo de Arquitectura
                 </a>
             </div>
@@ -153,20 +167,41 @@
         </section>
 
         <section id="mantenimiento">
-            <h2>Mantenimiento y Laboratorio</h2>
+            <h2>Laboratorio: Diagnóstico y Mantenimiento</h2>
+            <p>Documentación técnica de los procedimientos realizados en el entorno de pruebas.</p>
+
             <div class="galeria-grid">
                 <div class="tarjeta">
-                    <h3>Ficha Técnica Final</h3>
-                    <p>Mantenimiento preventivo y correctivo de una PC funcional del laboratorio.</p>
-                    <a href="LINK_FICHA_MANTENIMIENTO" target="_blank" class="boton-accion">Ver Ficha Técnica Final</a>
+                    <h3>Ficha Práctica de Hardware</h3>
+                    <p>Reconocimiento visual e inspección de componentes internos en equipos de descarte.</p>
+                    <a href="LINK_A_LA_FICHA_PRACTICA" target="_blank" class="boton-accion">Ver Ficha Completada</a>
                 </div>
+
+                <div class="tarjeta">
+                    <h3>Manual del Técnico</h3>
+                    <p>Protocolos de diagnóstico, desarme, uso del multímetro y recuperación de datos (Dongle).</p>
+                    <a href="LINK_AL_MANUAL_UNIFICADO" target="_blank" class="boton-accion">Leer Manual de
+                        Protocolos</a>
+                </div>
+
                 <div class="tarjeta">
                     <img src="images/soldadura.jpg" alt="Práctica de soldadura de componentes electrónicos">
-                    <h3>Soldadura y Desoldadura</h3>
-                    <p>Recuperación de componentes electrónicos y reparación de pistas en placas de descarte.</p>
+                    <h3>Soldadura y Recuperación</h3>
+                    <p>Prácticas de desoldadura de componentes y reparación de pistas en placas base averiadas.</p>
                 </div>
             </div>
+
+            <div class="caja-destacada">
+                <h3>Base de Datos de Conocimiento (Teoría)</h3>
+                <p>Acceso al informe técnico completo sobre funcionamiento interno, arquitectura de componentes y
+                    resolución de cuellos de botella.</p>
+                <br>
+                <a href="LINK_AL_PDF_TEORICO" target="_blank" class="boton-accion" style="text-decoration: none ;">
+                    Descargar/Ver PDF Teórico Completo
+                </a>
+            </div>
         </section>
+
 
         <section id="arduino">
             <h2>Proyectos Arduino e IoT</h2>
@@ -194,14 +229,278 @@
         <!-- ETAPA 4: El JS busca este dialog por id="modal-info" para abrir y cerrar -->
         <dialog id="modal-info">
             <h3>Layout de Placa Madre ASRock X870E Taichi</h3>
-            <img src="images/manual_layout.png" alt="Esquema del manual de ASRock X870E" style="width: 100%; height: auto;">
-            <p>El zócalo AM5 aloja el procesador AMD Ryzen 7 9800X3D. Se observan las ranuras DIMM para los 64GB de memoria RAM instalada.</p>
+            <img src="images/layout.png" alt="Esquema del manual de ASRock X870E" style= "width: 100%; height: auto;     ">
+            <p>La placa madre ASRock X870E Taichi utiliza el zócalo AM5 y es compatible con procesadores AMD Ryzen de
+                las series 7000, 8000 y 9000. Cuenta con cuatro ranuras DIMM para memoria DDR5, con soporte de hasta 192
+                GB en modo dual channel y frecuencias de hasta 8200+ MHz con overclocking mediante perfiles AMD EXPO.
+                Su diseño de energía de 24+2+1 fases con MOSFETs de 110A garantiza una entrega de potencia estable
+                incluso bajo cargas extremas. Incorpora dos slots PCIe 5.0 x16 para tarjetas gráficas, y hasta cuatro
+                ranuras M.2, siendo la principal compatible con PCIe 5.0 para velocidades de transferencia de hasta 128
+                Gb/s.
+                En cuanto a conectividad, ofrece dos puertos USB4 Type-C en el panel trasero con soporte DisplayPort,
+                además de puertos USB 3.2 Gen 2 y conectividad inalámbrica Wi-Fi 7 + Bluetooth 5.4. La red por cable es
+                gestionada por un controlador Realtek 5GbE. El audio está a cargo del codec Realtek ALC4082 junto con un
+                DAC ESS SABRE9219 y capacitores WIMA, una combinación de alto nivel poco habitual en esta categoría.
+                Su factor de forma es EATX, y su PCB de 8 capas con cobre de 2 oz mejora la integridad de señal y la
+                eficiencia energética, pensado para sistemas de alto rendimiento y overclocking.</p>
             <!-- ETAPA 4: El JS busca este botón por id="btn-cerrar" para cerrar el modal -->
             <button id="btn-cerrar" class="boton-accion">Cerrar Explicación</button>
         </dialog>
     </main>
 
-    <!-- ETAPA 6: Footer semántico -->
+    <!-- DIALOG: Arquitectura de Placa Madre ASRock X870 Pro RS -->
+    <dialog id="modal-arquitectura">
+        <div class="modal-arquitectura-header">
+            <h3>Arquitectura: ASRock X870 Pro RS</h3>
+            <button id="btn-cerrar-arquitectura" class="boton-accion boton-cerrar-x">&#x2715;</button>
+        </div>
+
+        <div class="modal-tabs">
+            <button class="tab-btn tab-activo" data-tab="factores">Factores de Forma</button>
+            <button class="tab-btn" data-tab="socket">Socket</button>
+            <button class="tab-btn" data-tab="vrm">VRM</button>
+            <button class="tab-btn" data-tab="chipset">Chipset</button>
+            <button class="tab-btn" data-tab="buses">Buses</button>
+            <button class="tab-btn" data-tab="headers">Headers</button>
+        </div>
+
+        <div class="tab-content tab-content-activo" id="tab-factores">
+            <h4>Factores de Forma</h4>
+            <p>La ASRock X870 Pro RS utiliza el formato <strong>ATX (305 x 244 mm)</strong>.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">ATX</span>
+                    <ul><li>Mas ranuras PCIe y slots RAM</li><li>Mejor disipacion termica</li><li>Ideal para alto rendimiento</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Micro-ATX</span>
+                    <ul><li>Menor tamano</li><li>Menos expansion</li><li>Mas economico</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Mini-ITX</span>
+                    <ul><li>Muy compacto</li><li>Solo 1 PCIe y 2 slots RAM</li><li>Limitado para upgrades</li></ul>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> El formato ATX permite mayor escalabilidad, mejor flujo de aire y mayor capacidad de expansion.</p>
+        </div>
+
+        <div class="tab-content" id="tab-socket">
+            <h4>Socket del Procesador</h4>
+            <p>Esta placa usa socket <strong>AM5 (tipo LGA)</strong>.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">LGA (Land Grid Array)</span>
+                    <ul><li>Pines en la placa base</li><li>Mayor densidad de contactos</li><li>Mejor transmision electrica</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">PGA (Pin Grid Array)</span>
+                    <ul><li>Pines en el CPU</li><li>Mas fragil fisicamente</li></ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>AMD:</strong> AM5 &rarr; Ryzen 7000, 8000, 9000</p>
+                <p><strong>Intel:</strong> LGA 1700 / LGA 1851 segun generacion</p>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> El uso de LGA en AM5 mejora la fiabilidad y rendimiento electrico, especialmente en CPUs de alto consumo.</p>
+        </div>
+
+        <div class="tab-content" id="tab-vrm">
+            <h4>VRM y Fases de Alimentacion</h4>
+            <p>El <strong>VRM (Voltage Regulator Module)</strong> convierte los 12V de la fuente en voltajes bajos y estables para el CPU.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">MOSFETs</span>
+                    <ul><li>Interruptores de alta velocidad</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Chokes</span>
+                    <ul><li>Filtran la corriente</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Capacitores</span>
+                    <ul><li>Estabilizan el voltaje</li></ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>En la X870 Pro RS:</strong> VRM multifase con disipadores de aluminio.</p>
+                <p>Reduce temperatura &middot; Evita throttling &middot; Mejora estabilidad bajo carga.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> Un buen VRM permite overclock estable y mayor vida util del CPU.</p>
+        </div>
+
+        <div class="tab-content" id="tab-chipset">
+            <h4>Chipset X870</h4>
+            <p>El chipset actua como <strong>centro de comunicaciones</strong> de la placa.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">A620 (Entrada)</span>
+                    <ul><li>Menos conectividad</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">B650 (Media)</span>
+                    <ul><li>Equilibrio precio/funcion</li></ul>
+                </div>
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">X870 (Alta)</span>
+                    <ul><li>Mas lineas PCIe</li><li>Soporte PCIe 5.0</li><li>USB rapidos y NVMe</li></ul>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> El chipset define las capacidades totales de la placa, no solo el CPU.</p>
+        </div>
+
+        <div class="tab-content" id="tab-buses">
+            <h4>Buses de Datos (PCI Express)</h4>
+            <p>Carriles de alta velocidad para GPU y almacenamiento.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">x16</span>
+                    <ul><li>GPU &mdash; maximo ancho de banda</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">x4</span>
+                    <ul><li>SSD NVMe</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">x1</span>
+                    <ul><li>Red, sonido, otras tarjetas</li></ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>PCIe 4.0</strong> &rarr; rapido &nbsp;|&nbsp; <strong>PCIe 5.0</strong> &rarr; el doble de velocidad</p>
+                <p><strong>M.2 NVMe:</strong> Reemplaza SATA, hasta 10&times; mas rapido.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> Los buses determinan la velocidad de transferencia de datos, clave para el rendimiento general.</p>
+        </div>
+
+        <div class="tab-content" id="tab-headers">
+            <h4>Conexiones Internas y Headers</h4>
+            <div class="headers-grid">
+                <div class="header-item"><span class="header-nombre">ATX 24 pines</span><span class="header-desc">Alimentacion general de la placa</span></div>
+                <div class="header-item"><span class="header-nombre">EPS 8 pines</span><span class="header-desc">Alimentacion del CPU</span></div>
+                <div class="header-item"><span class="header-nombre">F_PANEL</span><span class="header-desc">Boton de encendido, reset, LEDs</span></div>
+                <div class="header-item"><span class="header-nombre">CPU_FAN</span><span class="header-desc">Ventilador del CPU</span></div>
+                <div class="header-item"><span class="header-nombre">SYS_FAN</span><span class="header-desc">Ventiladores del gabinete</span></div>
+                <div class="header-item"><span class="header-nombre">SATA</span><span class="header-desc">Discos HDD y SSD tradicionales</span></div>
+                <div class="header-item"><span class="header-nombre">Headers USB</span><span class="header-desc">USB frontal del gabinete</span></div>
+                <div class="header-item"><span class="header-nombre">F_AUDIO</span><span class="header-desc">Audio frontal (auriculares/mic)</span></div>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> Estos conectores permiten la integracion completa del hardware interno con el gabinete.</p>
+        </div>
+    </dialog>
+        <dialog id="modal-procesador">
+        <div class="modal-arquitectura-header">
+            <h3>Arquitectura: ASRock X870 Pro RS</h3>
+            <button id="btn-cerrar-procesador class="boton-accion boton-cerrar-x">&#x2715;</button>
+        </div>
+
+        <div class="modal-tabs">
+            <button class="tab-btn tab-activo" data-tab="nucleos">nucleos e hilos</button>
+            <button class="tab-btn" data-tab="frecuencia">frecuencia e ipc</button>
+            <button class="tab-btn" data-tab="cache">memoria cache</button>
+            <button class="tab-btn" data-tab="graficos">graficos integrados</button>
+        </div>
+
+        <div class="tab-content tab-content-activo" id="tab-nucleos">
+            <h4>Factores de Forma</h4>
+            <p>La ASRock X870 Pro RS utiliza el formato <strong>ATX (305 x 244 mm)</strong>.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">ATX</span>
+                    <ul><li>Mas ranuras PCIe y slots RAM</li><li>Mejor disipacion termica</li><li>Ideal para alto rendimiento</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Micro-ATX</span>
+                    <ul><li>Menor tamano</li><li>Menos expansion</li><li>Mas economico</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Mini-ITX</span>
+                    <ul><li>Muy compacto</li><li>Solo 1 PCIe y 2 slots RAM</li><li>Limitado para upgrades</li></ul>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> El formato ATX permite mayor escalabilidad, mejor flujo de aire y mayor capacidad de expansion.</p>
+        </div>
+
+        <div class="tab-content" id="tab-frecuencia">
+            <h4>Socket del Procesador</h4>
+            <p>Esta placa usa socket <strong>AM5 (tipo LGA)</strong>.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">LGA (Land Grid Array)</span>
+                    <ul><li>Pines en la placa base</li><li>Mayor densidad de contactos</li><li>Mejor transmision electrica</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">PGA (Pin Grid Array)</span>
+                    <ul><li>Pines en el CPU</li><li>Mas fragil fisicamente</li></ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>AMD:</strong> AM5 &rarr; Ryzen 7000, 8000, 9000</p>
+                <p><strong>Intel:</strong> LGA 1700 / LGA 1851 segun generacion</p>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> El uso de LGA en AM5 mejora la fiabilidad y rendimiento electrico, especialmente en CPUs de alto consumo.</p>
+        </div>
+
+        <div class="tab-content" id="tab-cache">
+            <h4>VRM y Fases de Alimentacion</h4>
+            <p>El <strong>VRM (Voltage Regulator Module)</strong> convierte los 12V de la fuente en voltajes bajos y estables para el CPU.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">MOSFETs</span>
+                    <ul><li>Interruptores de alta velocidad</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Chokes</span>
+                    <ul><li>Filtran la corriente</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Capacitores</span>
+                    <ul><li>Estabilizan el voltaje</li></ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>En la X870 Pro RS:</strong> VRM multifase con disipadores de aluminio.</p>
+                <p>Reduce temperatura &middot; Evita throttling &middot; Mejora estabilidad bajo carga.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> Un buen VRM permite overclock estable y mayor vida util del CPU.</p>
+        </div>
+
+        <div class="tab-content" id="tab-graficos">
+            <h4>Chipset X870</h4>
+            <p>El chipset actua como <strong>centro de comunicaciones</strong> de la placa.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">A620 (Entrada)</span>
+                    <ul><li>Menos conectividad</li></ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">B650 (Media)</span>
+                    <ul><li>Equilibrio precio/funcion</li></ul>
+                </div>
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">X870 (Alta)</span>
+                    <ul><li>Mas lineas PCIe</li><li>Soporte PCIe 5.0</li><li>USB rapidos y NVMe</li></ul>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> El chipset define las capacidades totales de la placa, no solo el CPU.</p>
+        </div>
+        <div class="tab-content" id="tab-headers">
+            <h4>Conexiones Internas y Headers</h4>
+            <div class="headers-grid">
+                <div class="header-item"><span class="header-nombre">ATX 24 pines</span><span class="header-desc">Alimentacion general de la placa</span></div>
+                <div class="header-item"><span class="header-nombre">EPS 8 pines</span><span class="header-desc">Alimentacion del CPU</span></div>
+                <div class="header-item"><span class="header-nombre">F_PANEL</span><span class="header-desc">Boton de encendido, reset, LEDs</span></div>
+                <div class="header-item"><span class="header-nombre">CPU_FAN</span><span class="header-desc">Ventilador del CPU</span></div>
+                <div class="header-item"><span class="header-nombre">SYS_FAN</span><span class="header-desc">Ventiladores del gabinete</span></div>
+                <div class="header-item"><span class="header-nombre">SATA</span><span class="header-desc">Discos HDD y SSD tradicionales</span></div>
+                <div class="header-item"><span class="header-nombre">Headers USB</span><span class="header-desc">USB frontal del gabinete</span></div>
+                <div class="header-item"><span class="header-nombre">F_AUDIO</span><span class="header-desc">Audio frontal (auriculares/mic)</span></div>
+            </div>
+            <p class="conclusion"><strong>Conclusion:</strong> Estos conectores permiten la integracion completa del hardware interno con el gabinete.</p>
+        </div>
+    </dialog>   
+    
+
+    <!-- ETAPA 6: Footer semantico -->
     <footer>
         <p>&copy; 2026 - Proyecto de Laboratorio de Hardware | 5to Año</p>
         <p>Desarrollado con HTML, CSS y JS puro.</p>
@@ -210,4 +509,5 @@
     <!-- El script va SIEMPRE al final del body para que el DOM ya esté cargado -->
     <script src="scripts/main.js"></script>
 </body>
+
 </html>
