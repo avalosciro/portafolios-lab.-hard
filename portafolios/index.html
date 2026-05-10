@@ -16,8 +16,9 @@
 </head>
 
 <body>
-    <canvas id="particleCanvas" style="position:fixed; top:0; left:0; z-index:-1; background:#0a0a0f;"></canvas>
-    <div id="cursor-follower"></div>
+    <!-- FIX: sin style inline; el CSS lo posiciona fixed y el JS le asigna width/height -->
+    <canvas id="particleCanvas"></canvas>
+
     <!-- ETAPA 7: Botón flotante para cambiar tema. El JS lo busca por id="btn-tema" -->
     <button id="btn-tema" class="interruptor-tema" title="Cambiar tema">☽</button>
 
@@ -60,45 +61,59 @@
                     <h3>Microprocesador</h3>
                     <p>Modelo: AMD Ryzen™ 7 9800X3D Desktop Processor</p>
                     <p>Arquitectura: 64 bits, x64</p>
-                    <button id="btn-procesador" class="boton-accion" style="margin-top: 8px;">Ver Arquitectura del procesador</button>
-                     <a href="https://docs.google.com/document/d/1lcSYQJobuoliBj2XlyB6rshgYvCthubR1uOrLAryaLQ/edit?tab=t.0#heading=h.fa52d7vbabaw"
-                     target="_blank">Ver informe</a>
+                    
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/ram.jpg" alt="Memoria RAM">
                     <h3>Memoria RAM</h3>
                     <p>Capacidad: 64.0 GB instalada (63.4 GB utilizable)</p>
+                    <a href="https://docs.google.com/document/d/1X_gfrr9QbThIvy6NHY7M2cr6-NHoJ8MjPmpXfdPCP8o/edit?tab=t.0#heading=h.z2hmhbyfjksp"
+                     target="_blank">Ver informe</a>
+                     <button id="btn-procesador" class="boton-accion" style="margin-top: 8px;">Ver Arquitectura de la ram</button>
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/gpu.jpg" alt="Tarjeta Gráfica">
                     <h3>Tarjeta Gráfica (GPU)</h3>
                     <p>Modelo: NVIDIA GeForce RTX 5060 8 GB</p>
+                    <!-- FIX: botón que faltaba para abrir modal-gpu -->
+                    <button id="btn-gpu" class="boton-accion" style="margin-top: 8px;">Ver Arquitectura de la GPU</button>
+                    <br>
+                    <a href="https://docs.google.com/document/d/1VN1uyxO3Dv9LaLhQJtd2EEemQoGByfEJ1tVc3THxBkI/edit?tab=t.0#heading=h.l6g4lyby5bo3"
+                     target="_blank" style="display:inline-block; margin-top:8px;">Ver informe</a>
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/ssd.jpg" alt="Unidad de Estado Sólido SSD">
                     <h3>Almacenamiento</h3>
                     <p>Tipo: ssd samsung 90 pro/ HDD SATA</p>
+                    <a href="https://docs.google.com/document/d/164ZEwJW0IJcwIPcSm1gTPdayiGJGkwZD5K02Eo_jO8I/edit?tab=t.0"
+                     target="_blank">Ver informe</a>
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/fuente.jpg" alt="Fuente de Alimentación">
                     <h3>Fuente de Alimentación (PSU)</h3>
                     <p>Potencia: 600W 80 Plus Bronze</p>
+                    <a href="https://docs.google.com/document/d/1lSTamC885G7_Npwy-lcnyiBTyBPR-rsjDfaMJy_2zjw/edit?tab=t.0#heading=h.7zvxcr1ibayq"
+                     target="_blank">Ver informe</a>
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/cooler.jpg" alt="Sistema de refrigeración del CPU">
                     <h3>Sistema de Refrigeración</h3>
                     <p>Tipo: noctua nh-d15 g2</p>
+                    <a href="https://docs.google.com/document/d/1lcSYQJobuoliBj2XlyB6rshgYvCthubR1uOrLAryaLQ/edit?tab=t.0#heading=h.fa52d7vbabaw"
+                     target="_blank">Ver informe</a>
                 </div>
 
                 <div class="tarjeta">
                     <img src="images/gabinete.jpg" alt="Gabinete de la PC">
                     <h3>Gabinete (Chasis)</h3>
                     <p>Formato: Mid Tower ATX</p>
+                    <a href="https://docs.google.com/document/d/1lSTamC885G7_Npwy-lcnyiBTyBPR-rsjDfaMJy_2zjw/edit?tab=t.0#heading=h.7zvxcr1ibayq"
+                     target="_blank">Ver informe</a>
                 </div>
             </div>
         </section>
@@ -106,6 +121,8 @@
         <section id="perifericos">
             <h2>Periféricos y Dispositivos E/S</h2>
             <p>Interfaces físicas de comunicación con el usuario.</p>
+            <a href="https://docs.google.com/document/d/12lkkh4JFFGG8Rfa92L8skRSey3NRlQZ9EF0_SC_pOoo/edit?tab=t.0#heading=h.d4zghuhtrft9"
+                     target="_blank">Ver informe</a>
 
             <div class="galeria-grid">
                 <div class="tarjeta">
@@ -196,12 +213,11 @@
                 <p>Acceso al informe técnico completo sobre funcionamiento interno, arquitectura de componentes y
                     resolución de cuellos de botella.</p>
                 <br>
-                <a href="LINK_AL_PDF_TEORICO" target="_blank" class="boton-accion" style="text-decoration: none ;">
+                <a href="LINK_AL_PDF_TEORICO" target="_blank" class="boton-accion" style="text-decoration: none;">
                     Descargar/Ver PDF Teórico Completo
                 </a>
             </div>
         </section>
-
 
         <section id="arduino">
             <h2>Proyectos Arduino e IoT</h2>
@@ -229,7 +245,7 @@
         <!-- ETAPA 4: El JS busca este dialog por id="modal-info" para abrir y cerrar -->
         <dialog id="modal-info">
             <h3>Layout de Placa Madre ASRock X870E Taichi</h3>
-            <img src="images/layout.png" alt="Esquema del manual de ASRock X870E" style= "width: 100%; height: auto;     ">
+            <img src="images/layout.png" alt="Esquema del manual de ASRock X870E" style="width: 100%; height: auto;">
             <p>La placa madre ASRock X870E Taichi utiliza el zócalo AM5 y es compatible con procesadores AMD Ryzen de
                 las series 7000, 8000 y 9000. Cuenta con cuatro ranuras DIMM para memoria DDR5, con soporte de hasta 192
                 GB en modo dual channel y frecuencias de hasta 8200+ MHz con overclocking mediante perfiles AMD EXPO.
@@ -387,118 +403,297 @@
             <p class="conclusion"><strong>Conclusion:</strong> Estos conectores permiten la integracion completa del hardware interno con el gabinete.</p>
         </div>
     </dialog>
-        <dialog id="modal-procesador">
+
+    <dialog id="modal-procesador">
         <div class="modal-arquitectura-header">
-            <h3>Arquitectura: ASRock X870 Pro RS</h3>
-            <button id="btn-cerrar-procesador class="boton-accion boton-cerrar-x">&#x2715;</button>
+            <h3>Memoria RAM y Almacenamiento</h3>
+            <button id="btn-cerrar-procesador" class="boton-accion boton-cerrar-x">&#x2715;</button>
         </div>
 
         <div class="modal-tabs">
-            <button class="tab-btn tab-activo" data-tab="nucleos">nucleos e hilos</button>
-            <button class="tab-btn" data-tab="frecuencia">frecuencia e ipc</button>
-            <button class="tab-btn" data-tab="cache">memoria cache</button>
-            <button class="tab-btn" data-tab="graficos">graficos integrados</button>
+            <button class="tab-btn tab-activo" data-tab="ram-volatilidad">RAM</button>
+            <button class="tab-btn" data-tab="ram-ddr">DDR5 vs DDR4</button>
+            <button class="tab-btn" data-tab="ram-dual">Dual Channel</button>
+            <button class="tab-btn" data-tab="ram-storage">Almacenamiento</button>
+            <button class="tab-btn" data-tab="ram-velocidad">Velocidades</button>
+            <button class="tab-btn" data-tab="ram-tips">Tips</button>
         </div>
 
-        <div class="tab-content tab-content-activo" id="tab-nucleos">
-            <h4>Factores de Forma</h4>
-            <p>La ASRock X870 Pro RS utiliza el formato <strong>ATX (305 x 244 mm)</strong>.</p>
-            <div class="comparativa-grid">
-                <div class="comp-item comp-destacado">
-                    <span class="comp-titulo">ATX</span>
-                    <ul><li>Mas ranuras PCIe y slots RAM</li><li>Mejor disipacion termica</li><li>Ideal para alto rendimiento</li></ul>
-                </div>
-                <div class="comp-item">
-                    <span class="comp-titulo">Micro-ATX</span>
-                    <ul><li>Menor tamano</li><li>Menos expansion</li><li>Mas economico</li></ul>
-                </div>
-                <div class="comp-item">
-                    <span class="comp-titulo">Mini-ITX</span>
-                    <ul><li>Muy compacto</li><li>Solo 1 PCIe y 2 slots RAM</li><li>Limitado para upgrades</li></ul>
-                </div>
+        <div class="tab-content tab-content-activo" id="tab-ram-volatilidad">
+            <h4>Memoria RAM &mdash; Volatilidad y Funci&oacute;n</h4>
+            <p>La RAM es una memoria <strong>vol&aacute;til</strong>: pierde toda su informaci&oacute;n al cortar el suministro el&eacute;ctrico.</p>
+            <div class="info-box">
+                <p>El almacenamiento es el <strong>archivo</strong> donde guard&aacute;s los documentos.</p>
+                <p>La RAM es la <strong>mesa de trabajo</strong> donde extend&eacute;s los papeles que est&aacute;s usando ahora.</p>
             </div>
-            <p class="conclusion"><strong>Conclusion:</strong> El formato ATX permite mayor escalabilidad, mejor flujo de aire y mayor capacidad de expansion.</p>
+            <p>Sin RAM, el CPU tendr&iacute;a que buscar cada dato directamente en el almacenamiento lento, lo cual paralizaría el sistema. Act&uacute;a como intermediaria de alta velocidad entre el procesador y el disco.</p>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> La RAM no guarda datos permanentemente; su valor est&aacute; en la velocidad con que provee informaci&oacute;n activa al CPU.</p>
         </div>
 
-        <div class="tab-content" id="tab-frecuencia">
-            <h4>Socket del Procesador</h4>
-            <p>Esta placa usa socket <strong>AM5 (tipo LGA)</strong>.</p>
+        <div class="tab-content" id="tab-ram-ddr">
+            <h4>Tecnolog&iacute;a y Velocidad: DDR5 vs DDR4</h4>
+            <p><strong>DDR (Double Data Rate):</strong> transfiere datos dos veces por ciclo de reloj, duplicando el ancho de banda efectivo.</p>
             <div class="comparativa-grid">
                 <div class="comp-item comp-destacado">
-                    <span class="comp-titulo">LGA (Land Grid Array)</span>
-                    <ul><li>Pines en la placa base</li><li>Mayor densidad de contactos</li><li>Mejor transmision electrica</li></ul>
+                    <span class="comp-titulo">DDR5</span>
+                    <ul>
+                        <li>Velocidad base: +4800 MT/s</li>
+                        <li>PMIC integrado en el m&oacute;dulo</li>
+                        <li>Dos sub-canales de 32 bits por m&oacute;dulo</li>
+                        <li>Mayor eficiencia de acceso</li>
+                    </ul>
                 </div>
                 <div class="comp-item">
-                    <span class="comp-titulo">PGA (Pin Grid Array)</span>
-                    <ul><li>Pines en el CPU</li><li>Mas fragil fisicamente</li></ul>
+                    <span class="comp-titulo">DDR4</span>
+                    <ul>
+                        <li>Velocidad: 2133&ndash;3200 MT/s</li>
+                        <li>Un canal de 64 bits por m&oacute;dulo</li>
+                        <li>Tecnolog&iacute;a m&aacute;s madura y econ&oacute;mica</li>
+                    </ul>
                 </div>
             </div>
             <div class="info-box">
-                <p><strong>AMD:</strong> AM5 &rarr; Ryzen 7000, 8000, 9000</p>
-                <p><strong>Intel:</strong> LGA 1700 / LGA 1851 segun generacion</p>
+                <p><strong>Frecuencia (MT/s):</strong> velocidad de la autopista.</p>
+                <p><strong>Latencia CL:</strong> tiempo de respuesta ante una solicitud. Una RAM r&aacute;pida con alta latencia puede ser menos eficiente que una equilibrada.</p>
             </div>
-            <p class="conclusion"><strong>Conclusion:</strong> El uso de LGA en AM5 mejora la fiabilidad y rendimiento electrico, especialmente en CPUs de alto consumo.</p>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> DDR5 no solo es m&aacute;s r&aacute;pida, sino arquitect&oacute;nicamente m&aacute;s eficiente. Activar el perfil XMP/EXPO es clave para aprovecharla.</p>
         </div>
 
-        <div class="tab-content" id="tab-cache">
-            <h4>VRM y Fases de Alimentacion</h4>
-            <p>El <strong>VRM (Voltage Regulator Module)</strong> convierte los 12V de la fuente en voltajes bajos y estables para el CPU.</p>
+        <div class="tab-content" id="tab-ram-dual">
+            <h4>El Beneficio del Dual Channel</h4>
+            <p>Instalar <strong>dos m&oacute;dulos de 8 GB</strong> (total 16 GB) es superior a un solo m&oacute;dulo de 16 GB.</p>
             <div class="comparativa-grid">
                 <div class="comp-item">
-                    <span class="comp-titulo">MOSFETs</span>
-                    <ul><li>Interruptores de alta velocidad</li></ul>
-                </div>
-                <div class="comp-item">
-                    <span class="comp-titulo">Chokes</span>
-                    <ul><li>Filtran la corriente</li></ul>
-                </div>
-                <div class="comp-item">
-                    <span class="comp-titulo">Capacitores</span>
-                    <ul><li>Estabilizan el voltaje</li></ul>
-                </div>
-            </div>
-            <div class="info-box">
-                <p><strong>En la X870 Pro RS:</strong> VRM multifase con disipadores de aluminio.</p>
-                <p>Reduce temperatura &middot; Evita throttling &middot; Mejora estabilidad bajo carga.</p>
-            </div>
-            <p class="conclusion"><strong>Conclusion:</strong> Un buen VRM permite overclock estable y mayor vida util del CPU.</p>
-        </div>
-
-        <div class="tab-content" id="tab-graficos">
-            <h4>Chipset X870</h4>
-            <p>El chipset actua como <strong>centro de comunicaciones</strong> de la placa.</p>
-            <div class="comparativa-grid">
-                <div class="comp-item">
-                    <span class="comp-titulo">A620 (Entrada)</span>
-                    <ul><li>Menos conectividad</li></ul>
-                </div>
-                <div class="comp-item">
-                    <span class="comp-titulo">B650 (Media)</span>
-                    <ul><li>Equilibrio precio/funcion</li></ul>
+                    <span class="comp-titulo">Single Channel (1 &times; 16 GB)</span>
+                    <ul>
+                        <li>Bus de 64 bits hacia el CPU</li>
+                        <li>Menor ancho de banda</li>
+                    </ul>
                 </div>
                 <div class="comp-item comp-destacado">
-                    <span class="comp-titulo">X870 (Alta)</span>
-                    <ul><li>Mas lineas PCIe</li><li>Soporte PCIe 5.0</li><li>USB rapidos y NVMe</li></ul>
+                    <span class="comp-titulo">Dual Channel (2 &times; 8 GB)</span>
+                    <ul>
+                        <li>Bus de 128 bits hacia el CPU</li>
+                        <li>15&ndash;30% m&aacute;s rendimiento en tareas exigentes</li>
+                        <li>Duplica el ancho de la carretera</li>
+                    </ul>
                 </div>
             </div>
-            <p class="conclusion"><strong>Conclusion:</strong> El chipset define las capacidades totales de la placa, no solo el CPU.</p>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> Siempre que sea posible, instal&aacute; los m&oacute;dulos en pares para activar el Dual Channel y aprovechar el doble del ancho de banda.</p>
         </div>
-        <div class="tab-content" id="tab-headers">
-            <h4>Conexiones Internas y Headers</h4>
+
+        <div class="tab-content" id="tab-ram-storage">
+            <h4>Tipos de Almacenamiento Persistente</h4>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">HDD (Disco Mec&aacute;nico)</span>
+                    <ul>
+                        <li>Platos magn&eacute;ticos giratorios</li>
+                        <li>Cabezal m&oacute;vil de lectura/escritura</li>
+                        <li>Vulnerable a golpes f&iacute;sicos</li>
+                        <li>Cortes de luz pueden corromper datos</li>
+                        <li>Velocidad: ~100&ndash;150 MB/s</li>
+                    </ul>
+                </div>
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">SSD (Estado S&oacute;lido)</span>
+                    <ul>
+                        <li>Celdas de memoria NAND Flash</li>
+                        <li>Sin partes m&oacute;viles</li>
+                        <li>Resistente a golpes</li>
+                        <li>SATA: ~550 MB/s</li>
+                        <li>NVMe M.2: +7000 MB/s (PCIe 4.0/5.0)</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> El SSD NVMe es la evoluci&oacute;n natural del almacenamiento: usa el protocolo NVMe dise&ntilde;ado espec&iacute;ficamente para la baja latencia de la memoria flash.</p>
+        </div>
+
+        <div class="tab-content" id="tab-ram-velocidad">
+            <h4>Comparativa de Velocidades y Cuello de Botella</h4>
             <div class="headers-grid">
-                <div class="header-item"><span class="header-nombre">ATX 24 pines</span><span class="header-desc">Alimentacion general de la placa</span></div>
-                <div class="header-item"><span class="header-nombre">EPS 8 pines</span><span class="header-desc">Alimentacion del CPU</span></div>
-                <div class="header-item"><span class="header-nombre">F_PANEL</span><span class="header-desc">Boton de encendido, reset, LEDs</span></div>
-                <div class="header-item"><span class="header-nombre">CPU_FAN</span><span class="header-desc">Ventilador del CPU</span></div>
-                <div class="header-item"><span class="header-nombre">SYS_FAN</span><span class="header-desc">Ventiladores del gabinete</span></div>
-                <div class="header-item"><span class="header-nombre">SATA</span><span class="header-desc">Discos HDD y SSD tradicionales</span></div>
-                <div class="header-item"><span class="header-nombre">Headers USB</span><span class="header-desc">USB frontal del gabinete</span></div>
-                <div class="header-item"><span class="header-nombre">F_AUDIO</span><span class="header-desc">Audio frontal (auriculares/mic)</span></div>
+                <div class="header-item"><span class="header-nombre">HDD</span><span class="header-desc">~100&ndash;150 MB/s</span></div>
+                <div class="header-item"><span class="header-nombre">SSD SATA</span><span class="header-desc">~550 MB/s (l&iacute;mite de interfaz SATA III)</span></div>
+                <div class="header-item"><span class="header-nombre">NVMe PCIe 4.0</span><span class="header-desc">~5000&ndash;7000 MB/s</span></div>
+                <div class="header-item"><span class="header-nombre">NVMe PCIe 5.0</span><span class="header-desc">+10000 MB/s</span></div>
             </div>
-            <p class="conclusion"><strong>Conclusion:</strong> Estos conectores permiten la integracion completa del hardware interno con el gabinete.</p>
+            <div class="info-box">
+                <p><strong>El cuello de botella:</strong> Un procesador de gama alta (i9) con HDD estar&aacute; el 99% del tiempo esperando al disco. Es como tener un Ferrari en una calle de tierra: la potencia del motor es irrelevante si no pod&eacute;s avanzar r&aacute;pido.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> El almacenamiento es frecuentemente el componente m&aacute;s limitante del sistema. Un SSD NVMe transforma la experiencia general m&aacute;s que cualquier otro upgrade.</p>
         </div>
-    </dialog>   
-    
+
+        <div class="tab-content" id="tab-ram-tips">
+            <h4>Datos &Uacute;tiles y Tips</h4>
+            <div class="headers-grid">
+                <div class="header-item">
+                    <span class="header-nombre">Perfil XMP/EXPO</span>
+                    <span class="header-desc">Activ&aacute;lo siempre en la BIOS. Sin &eacute;l, la RAM corre a velocidad base (ej. 4800 MT/s) en lugar de la publicitada (ej. 6000 MT/s).</span>
+                </div>
+                <div class="header-item">
+                    <span class="header-nombre">Mito de los GB</span>
+                    <span class="header-desc">64 GB no hace la PC m&aacute;s r&aacute;pida si solo us&aacute;s 10 GB. Velocidad y latencia (CL) importan m&aacute;s que la cantidad excesiva.</span>
+                </div>
+                <div class="header-item">
+                    <span class="header-nombre">Disipador en DDR5</span>
+                    <span class="header-desc">No es solo est&eacute;tico. Los chips DDR5 se calientan bajo carga; el disipador mantiene la estabilidad en frecuencias altas.</span>
+                </div>
+                <div class="header-item">
+                    <span class="header-nombre">No desfragmentes SSD</span>
+                    <span class="header-desc">La desfragmentaci&oacute;n es para HDD. En un SSD es innecesaria y desgasta las celdas NAND (ciclos de escritura).</span>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> Conocer estos detalles marca la diferencia entre un armado eficiente y uno que desaprovecha el hardware instalado.</p>
+        </div>
+    </dialog>
+
+    <!-- DIALOG: Anatomia y Funcionamiento de la GPU -->
+    <dialog id="modal-gpu">
+        <div class="modal-arquitectura-header">
+            <h3>Anatom&iacute;a y Funcionamiento de la GPU</h3>
+            <button id="btn-cerrar-gpu" class="boton-accion boton-cerrar-x">&#x2715;</button>
+        </div>
+
+        <div class="modal-tabs">
+            <button class="tab-btn tab-activo" data-tab="gpu-cpuvsgpu">CPU vs GPU</button>
+            <button class="tab-btn" data-tab="gpu-vram">VRAM</button>
+            <button class="tab-btn" data-tab="gpu-energia">Energ&iacute;a y Refrigeraci&oacute;n</button>
+            <button class="tab-btn" data-tab="gpu-tecnologias">Tecnolog&iacute;as</button>
+            <button class="tab-btn" data-tab="gpu-extra">Datos Extra</button>
+        </div>
+
+        <div class="tab-content tab-content-activo" id="tab-gpu-cpuvsgpu">
+            <h4>1. Arquitectura: CPU vs. GPU</h4>
+            <p>La diferencia fundamental radica en la <strong>filosof&iacute;a de procesamiento</strong>. El CPU es un generalista para tareas complejas y secuenciales; la GPU es un especialista en fuerza bruta matem&aacute;tica.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">CPU (Central Processing Unit)</span>
+                    <ul>
+                        <li>Pocos n&uacute;cleos (4 a 16 usualmente)</li>
+                        <li>Frecuencias de reloj muy altas</li>
+                        <li>Optimizado para <strong>latencia</strong></li>
+                        <li>Termina una tarea antes de pasar a la siguiente</li>
+                    </ul>
+                </div>
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">GPU (Graphics Processing Unit)</span>
+                    <ul>
+                        <li>Miles de n&uacute;cleos peque&ntilde;os y especializados</li>
+                        <li>Procesamiento <strong>paralelo masivo</strong></li>
+                        <li>N&uacute;cleos CUDA (NVIDIA) / Stream Processors (AMD)</li>
+                        <li>Millones de c&aacute;lculos simples simult&aacute;neos</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p>Si el CPU es un <strong>profesor resolviendo una ecuaci&oacute;n compleja</strong>, la GPU es un <strong>estadio lleno de calculadoras b&aacute;sicas</strong> resolviendo millones de sumas simples al mismo tiempo para dibujar cada p&iacute;xel.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> CPU y GPU no compiten, se complementan. El CPU toma decisiones complejas; la GPU ejecuta operaciones matem&aacute;ticas masivas en paralelo.</p>
+        </div>
+
+        <div class="tab-content" id="tab-gpu-vram">
+            <h4>2. VRAM: El Carril Exclusivo de Datos</h4>
+            <p>La <strong>VRAM (Video Random Access Memory)</strong>, como la tecnolog&iacute;a <strong>GDDR6</strong>, es una memoria de alta velocidad soldada directamente a la placa de video.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">RAM del sistema</span>
+                    <ul>
+                        <li>Bus de 64&ndash;128 bits (dual channel)</li>
+                        <li>Demasiado lenta para texturas 4K</li>
+                        <li>Latencia mayor por distancia f&iacute;sica</li>
+                    </ul>
+                </div>
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">VRAM (GDDR6)</span>
+                    <ul>
+                        <li>Buses de 256-bit, 384-bit o m&aacute;s</li>
+                        <li>Velocidades que la RAM del sistema no alcanza</li>
+                        <li>Soldada junto al chip: latencia m&iacute;nima</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>&iquest;Qu&eacute; almacena?</strong> El framebuffer (imagen pr&oacute;xima a mostrarse), texturas, modelos 3D y datos de geometr&iacute;a.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> La VRAM existe porque la RAM del sistema no puede proveer el ancho de banda necesario para alimentar a una GPU moderna en tiempo real.</p>
+        </div>
+
+        <div class="tab-content" id="tab-gpu-energia">
+            <h4>3. Consumo Energ&eacute;tico y Refrigeraci&oacute;n</h4>
+            <p>Las GPUs modernas son los componentes que <strong>m&aacute;s energ&iacute;a demandan</strong> en una PC, superando incluso al procesador.</p>
+            <div class="comparativa-grid">
+                <div class="comp-item">
+                    <span class="comp-titulo">Alimentaci&oacute;n PCIe</span>
+                    <ul>
+                        <li>La ranura PCIe entrega hasta <strong>75W</strong></li>
+                        <li>Insuficiente para GPUs de gama media/alta</li>
+                        <li>Requiere cables directos de la fuente (8 o 16 pines)</li>
+                        <li>Consumo real: 200W&ndash;450W</li>
+                    </ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Gesti&oacute;n T&eacute;rmica</span>
+                    <ul>
+                        <li>Disipadores de aluminio/cobre con heatpipes</li>
+                        <li>Ventiladores enfrían las aletas del disipador</li>
+                        <li>Superando <strong>85&ndash;90&deg;C</strong> &rarr; thermal throttling</li>
+                        <li>El throttling reduce velocidad para evitar da&ntilde;os</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> Una GPU mal refrigerada pierde rendimiento por throttling. La fuente de poder debe tener suficiente wattaje para cubrir el consumo real de la tarjeta.</p>
+        </div>
+
+        <div class="tab-content" id="tab-gpu-tecnologias">
+            <h4>4. Tecnolog&iacute;as de Vanguardia</h4>
+            <div class="comparativa-grid">
+                <div class="comp-item comp-destacado">
+                    <span class="comp-titulo">Ray Tracing (Trazado de Rayos)</span>
+                    <ul>
+                        <li>Simula el comportamiento f&iacute;sico de la luz</li>
+                        <li>Calcula el trayecto de cada rayo de luz</li>
+                        <li>Reflejos, refracciones y sombras realistas en tiempo real</li>
+                        <li>Apoyado en n&uacute;cleos dedicados: <strong>RT Cores</strong></li>
+                    </ul>
+                </div>
+                <div class="comp-item">
+                    <span class="comp-titulo">Upscaling por IA</span>
+                    <ul>
+                        <li><strong>DLSS (NVIDIA):</strong> redes neuronales reconstruyen imagen de 1080p a 4K</li>
+                        <li><strong>FSR (AMD):</strong> algoritmos de escalado espacial</li>
+                        <li>Gana FPS sin perder nitidez visual</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="info-box">
+                <p><strong>Rasterizaci&oacute;n vs. Ray Tracing:</strong> La mayor&iacute;a de los juegos usan rasterizaci&oacute;n (convertir objetos 3D en p&iacute;xeles 2D r&aacute;pidamente). El Ray Tracing es el paso siguiente: mucho m&aacute;s pesado pero infinitamente m&aacute;s realista.</p>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> DLSS y FSR permiten disfrutar de Ray Tracing sin sacrificar fluidez, usando IA para compensar el costo de rendimiento.</p>
+        </div>
+
+        <div class="tab-content" id="tab-gpu-extra">
+            <h4>Datos Extra para el Entendimiento T&eacute;cnico</h4>
+            <div class="headers-grid">
+                <div class="header-item">
+                    <span class="header-nombre">Cuello de Botella CPU&ndash;GPU</span>
+                    <span class="header-desc">No sirve tener una GPU ultra potente si el CPU es lento. El CPU le dice a la GPU qu&eacute; dibujar; si tarda, la GPU queda ociosa esperando instrucciones.</span>
+                </div>
+                <div class="header-item">
+                    <span class="header-nombre">El PCB de la GPU</span>
+                    <span class="header-desc">Placa de circuito impreso donde se montan los componentes. Contiene VRMs que transforman los 12V de la fuente en el voltaje exacto que necesita el chip gr&aacute;fico.</span>
+                </div>
+                <div class="header-item">
+                    <span class="header-nombre">Rasterizaci&oacute;n</span>
+                    <span class="header-desc">T&eacute;cnica tradicional: convierte objetos 3D en p&iacute;xeles 2D de forma r&aacute;pida. Es la base de casi todos los juegos actuales por su bajo costo de rendimiento.</span>
+                </div>
+                <div class="header-item">
+                    <span class="header-nombre">N&uacute;cleos CUDA / Stream Processors</span>
+                    <span class="header-desc">Unidades aritm&eacute;tico-l&oacute;gicas (ALU) de la GPU. Ejecutan c&aacute;lculos simult&aacute;neos para renderizar cada p&iacute;xel de la imagen en pantalla.</span>
+                </div>
+            </div>
+            <p class="conclusion"><strong>Conclusi&oacute;n:</strong> Entender la GPU como sistema completo &mdash;chip, VRAM, VRM, refrigeraci&oacute;n y su relaci&oacute;n con el CPU&mdash; permite tomar decisiones de hardware mucho m&aacute;s informadas.</p>
+        </div>
+    </dialog>
 
     <!-- ETAPA 6: Footer semantico -->
     <footer>

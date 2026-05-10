@@ -3,11 +3,11 @@
    ============================================================ */
 
 body {
-    font-family: 'Inter', sans-serif; 
-    background-color: #111111;
+    font-family: 'Inter', sans-serif;
+    background-color: transparent; /* el canvas fixed cubre el fondo */
     color: #b3b3b3;
     margin: 0;
-    transition: background-color 0.3s, color 0.3s; /* Etapa 7: transición suave al cambiar tema */
+    transition: color 0.3s; /* Etapa 7: transición suave al cambiar tema */
 }
 
 html {
@@ -182,8 +182,12 @@ footer {
 
 /* Cuando JS agrega .modo-oscuro al body, estos estilos sobreescriben los anteriores */
 body.modo-oscuro {
-    background-color: #0f172a;
     color: #ffedbd;
+}
+
+/* En modo oscuro el canvas cambia de color vía JS, pero por si acaso: */
+body.modo-oscuro #particleCanvas {
+    background: #0f172a;
 }
 
 body.modo-oscuro .interruptor-tema {
@@ -248,11 +252,20 @@ body.modo-oscuro nav {
     src: url('font/monse') format('truetype');
     font-weight: normal;
     font-style: normal;
+}
 
-}.tarjeta:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-    border: 3px solid #da3737d3; /* ← línea nueva */
+/* ============================================================
+   FIX: CANVAS DE PARTÍCULAS — fijo a la ventana, siempre atrás
+   ============================================================ */
+#particleCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: #0a0a0f;
+    pointer-events: none; /* el mouse pasa a través sin bloquear clicks */
 }
 .caja-destacada {
     text-align: center; 

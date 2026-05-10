@@ -53,23 +53,14 @@ const botonTema = document.getElementById('btn-tema');
    Cada vez que el usuario haga clic, se ejecutará la función callback.
 */
 botonTema.addEventListener('click', function() {
-
-    /* classList.toggle() es el método clave de esta etapa.
-       Funciona como un interruptor real:
-       - Si el <body> NO tiene la clase 'modo-oscuro' → se la agrega.
-       - Si el <body> YA tiene la clase 'modo-oscuro'  → se la quita.
-       El CSS de la Etapa 7 se encarga del resto de la magia visual. */
     document.body.classList.toggle('modo-oscuro');
 
-    /* Lógica Condicional (if / else):
-       Evaluamos el estado actual del body para decidir qué ícono mostrar.
-       classList.contains() retorna true si la clase existe, false si no. */
     if (document.body.classList.contains('modo-oscuro')) {
-        /* Modo oscuro ACTIVO → mostramos el sol para indicar que se puede volver a la luz */
         botonTema.textContent = '☀';
+        canvas.style.background = '#0f172a';
     } else {
-        /* Modo oscuro INACTIVO → mostramos la luna para indicar que se puede oscurecer */
         botonTema.textContent = '☽';
+        canvas.style.background = '#0a0a0f';
     }
 });
 
@@ -105,35 +96,34 @@ tabBtns.forEach(function(btn) {
     });
 });
 
-const botonprocesador  = document.getElementById('btn-procesador');
-const modalprocesador  = document.getElementById('modal-procesador');
-const botonCerrarprocesador    = document.getElementById('btn-cerrar-procesador');
+const botonprocesador       = document.getElementById('btn-procesador');
+const modalprocesador       = document.getElementById('modal-procesador');
+const botonCerrarprocesador = document.getElementById('btn-cerrar-procesador');
 
-botonArquitectura.addEventListener('click', function() {
-    modalArquitectura.showModal();
+botonprocesador.addEventListener('click', function() {
+    modalprocesador.showModal();
 });
 
-botonCerrarArq.addEventListener('click', function() {
-    modalArquitectura.close();
+botonCerrarprocesador.addEventListener('click', function() {
+    modalprocesador.close();
 });
 
-/* Lógica de Tabs */
-const tabbtns = document.querySelectorAll('.tab-btn');
-const tabcontents = document.querySelectorAll('.tab-content');
+// ── Modal GPU ─────────────────────────────────────────────────────────────────
 
-tabBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-        const tabId = btn.getAttribute('data-tab');
+const botonGpu       = document.getElementById('btn-gpu');
+const modalGpu       = document.getElementById('modal-gpu');
+const botonCerrarGpu = document.getElementById('btn-cerrar-gpu');
 
-        /* Quitar activo de todos */
-        tabBtns.forEach(function(b) { b.classList.remove('tab-activo'); });
-        tabContents.forEach(function(c) { c.classList.remove('tab-content-activo'); });
-
-        /* Activar el seleccionado */
-        btn.classList.add('tab-activo');
-        document.getElementById('tab-' + tabId).classList.add('tab-content-activo');
-    });
+botonGpu.addEventListener('click', function() {
+    modalGpu.showModal();
 });
+
+botonCerrarGpu.addEventListener('click', function() {
+    modalGpu.close();
+});
+
+
+// ── Partículas interactivas ───────────────────────────────────────────────────
 // Pon un <canvas id="particleCanvas"></canvas> en tu HTML donde quieras el efecto
 
 const canvas = document.getElementById('particleCanvas');
@@ -142,7 +132,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const PARTICLE_COUNT = 250;
+const PARTICLE_COUNT = 100;
 const CONNECT_DIST = 120;
 const mouse = { x: canvas.width / 2, y: canvas.height / 2 };
 let particles = [];
